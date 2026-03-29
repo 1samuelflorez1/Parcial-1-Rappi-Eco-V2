@@ -7,7 +7,8 @@ const controller =  new UsersController(repository)
 
 const router = express.Router()
 
-router.get("/", controller.getAllStores)
+router.get("/client", controller.getAllStores)
+router.get("/client/store/:id", controller.getAllStoreProducts)
 
 
 export default router

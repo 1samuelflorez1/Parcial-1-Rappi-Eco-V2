@@ -6,6 +6,7 @@ import ShopCart from "../assets/ShopCart.png"
 import SignOut from "../assets/signout.png"
 import ProductCard from "../components/Products";
 import { ProductsData } from "../services/ProductsData";
+import { StoresData } from "../services/StoresData";
 import type { ProductType } from "../types/ProductType";
 import type { RestaurantTypes } from "../types/RestaurantTypes";
 
@@ -17,12 +18,15 @@ function SpecificStore() {
 
   useEffect(() => {
     const loadstore = async () => {
-      const stores = await ProductsData(Number(id));
-      const storeindividual = stores.find(
+      const products = await ProductsData(Number(id));
+      const allStores = await StoresData();
+      const storeindividual = allStores.find(
         (s: RestaurantTypes) => s.id === Number(id),
       );
-      setPageName(storeindividual.name)
-      setStore(storeindividual.products);
+      if (storeindividual) {
+        setPageName(storeindividual.name);
+      }
+      setStore(products);
     };
     loadstore();
   }, [id]);

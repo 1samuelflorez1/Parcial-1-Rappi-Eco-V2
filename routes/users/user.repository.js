@@ -6,7 +6,7 @@ export class UsersRepository {
 
         return result.rows  
     }
-    getAllStoreProducts = async () => {
+    getAllStoreProducts = async (storeId) => {
         const result = await pool.query("SELECT * FROM products WHERE store_id = $1", [storeId])
 
         return result.rows  

@@ -43,7 +43,7 @@ function AvailableStores() {
         src={shopcart}></img>
       </div>
 
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-3 mb-12">
         {InfoRestaurants.map((IndividualRestaurant: RestaurantTypes) => {
           return (
             <RestaurantCards

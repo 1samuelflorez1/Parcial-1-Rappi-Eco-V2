@@ -4,6 +4,7 @@ import SeleccionarUser from "./pages/SeleccionarUser"
 import MainClientPage from "./pages/MainClientPage"
 import SpecificStore from "./pages/SpecificStore"
 import OptionalRestaurants from "./pages/OptionsRestaurants"
+import IndividualStore from "./pages/IndividualRestaurant"
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path="/seleccionuser/client" element={<MainClientPage/>} />
         <Route path="/seleccionuser/client/store/:id" element={<SpecificStore/>} />
         <Route path="/seleccionuser/restaurant" element={<OptionalRestaurants/>} />
+        <Route path="/seleccionuser/restaurant/store/:id" element={<IndividualStore/>} />
       </Routes>
     </BrowserRouter>
   )

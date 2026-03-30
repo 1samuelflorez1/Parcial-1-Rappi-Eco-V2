@@ -11,5 +11,15 @@ export class UsersRepository {
 
         return result.rows  
     }
+    createNewProduct = async (store_id, name, price, image_product) => {
+        const result = await pool.query(
+            "INSERT INTO products (store_id, name, price, image_product) VALUES ($1, $2, $3, $4) RETURNING *", 
+        [store_id, name, price, image_product])
+        return result.rows[0] 
+    }
+    toggleOpenStore = async (store_id, is_open) => {
+        const result = await pool.query("UPDATE stores SET is_open = $2 WHERE id = $1 RETURNING *", [store_id, is_open])
+        return result.rows[0]
+    }
 }
 

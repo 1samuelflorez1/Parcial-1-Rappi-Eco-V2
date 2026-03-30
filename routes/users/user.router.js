@@ -9,6 +9,7 @@ const router = express.Router()
 
 router.get("/client", controller.getAllStores)
 router.get("/client/store/:id", controller.getAllStoreProducts)
-
+router.post("/restaurant/store/product", controller.createNewProduct)
+router.put("/restaurant/store/status", controller.toggleOpenStore)
 
 export default router

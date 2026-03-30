@@ -17,11 +17,11 @@ function RestaurantCards({
   return (
     <div>
       <div
-        className="p-5 border-[#fc6251]/30 border-2 rounded-2xl w-90 m-5 
+        className="p-5 border-[#fc6251]/30 border-2 rounded w-90 m-5 
         flex flex-col items-center cursor-pointer hover:scale-105 transition-all"
       >
         <img
-          className="rounded-2xl h-60"
+          className="rounded h-60"
           src={CardIndividual.image_store}
         ></img>
         <p className="text-2xl font-bold text-white/80 mt-2">

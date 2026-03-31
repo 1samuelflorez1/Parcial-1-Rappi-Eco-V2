@@ -45,7 +45,7 @@ function SpecificStore() {
         className="scale-30 flex self-end cursor-pointer hover:scale-35 transition-all mb-7" 
         src={SignOut}></img>
         <img
-        onClick={() => navigate("/shopcart")}
+        onClick={() => navigate("/seleccionuser/client/shopcart")}
         className="scale-30 flex self-end ml-220 cursor-pointer hover:scale-35 transition-all mb-5" 
         src={ShopCart}></img>
         

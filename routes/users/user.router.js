@@ -1,9 +1,9 @@
 import express from "express"
-import {UsersController} from "./user.controller.js"
+import { UsersController } from "./user.controller.js"
 import { UsersRepository } from "./user.repository.js"
 
 const repository = new UsersRepository()
-const controller =  new UsersController(repository)
+const controller = new UsersController(repository)
 
 const router = express.Router()
 
@@ -11,5 +11,8 @@ router.get("/client", controller.getAllStores)
 router.get("/client/store/:id", controller.getAllStoreProducts)
 router.post("/restaurant/store/product", controller.createNewProduct)
 router.put("/restaurant/store/status", controller.toggleOpenStore)
+router.post("/client/order", controller.createOrder)
+router.get("/client/totalorders", controller.getTotalOrders)
+
 
 export default router

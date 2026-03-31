@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
-import RestaurantCards from "../components/RestaurantCards";
+import OrdersCards from "../components/OrdersCards";
 import { useNavigate } from "react-router-dom";
-import type { RestaurantTypes } from "../types/RestaurantTypes";
-import { StoresData } from "../services/StoresData";
+import type { OrdersType } from "../types/OrdersTypes";
 
 import logorappi from "../assets/logorappi.png"
 import shopcart from "../assets/ShopCart.png"
 import signout from "../assets/signout.png"
+import { OrdersData } from "../services/OrderData";
 
-function AvailableStores() {
-  const [InfoRestaurants, setInfoRestaurants] = useState<RestaurantTypes[]>([]);
+function TotalOrders() {
+  const [TotalOrders, setTotalOrders] = useState<OrdersType[]>([]);
   const navigate = useNavigate()
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await StoresData();
+        const data = await OrdersData();
         setTimeout(() => {
-          setInfoRestaurants(data);
+          setTotalOrders(data);
         }, 1);
       } catch (error) {
         console.log(error);
@@ -44,12 +44,12 @@ function AvailableStores() {
       </div>
 
       <div className="grid grid-cols-3 mb-12">
-        {InfoRestaurants.map((IndividualRestaurant: RestaurantTypes) => {
+        {TotalOrders.map((IndividualOrder: OrdersType) => {
           return (
-            <RestaurantCards
-              CardIndividual={IndividualRestaurant}
-              key={IndividualRestaurant.id}
-            ></RestaurantCards>
+            <OrdersCards
+              OrderIndividual={IndividualOrder}
+              key={IndividualOrder.id}
+            />
           );
         })}
       </div>
@@ -57,4 +57,4 @@ function AvailableStores() {
   );
 }
 
-export default AvailableStores;
+export default TotalOrders;

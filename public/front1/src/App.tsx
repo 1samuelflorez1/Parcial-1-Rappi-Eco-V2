@@ -5,6 +5,8 @@ import MainClientPage from "./pages/MainClientPage"
 import SpecificStore from "./pages/SpecificStore"
 import OptionalRestaurants from "./pages/OptionsRestaurants"
 import IndividualStore from "./pages/IndividualRestaurant"
+import TotalOrders from "./pages/TotalOrders"
+import ShopCart from "./pages/ShopCart"
 
 function App() {
   return (
@@ -14,8 +16,10 @@ function App() {
         <Route path="/seleccionuser" element={<SeleccionarUser/>} />
         <Route path="/seleccionuser/client" element={<MainClientPage/>} />
         <Route path="/seleccionuser/client/store/:id" element={<SpecificStore/>} />
+        <Route path="/seleccionuser/client/shopcart" element={<ShopCart/>} />
         <Route path="/seleccionuser/restaurant" element={<OptionalRestaurants/>} />
         <Route path="/seleccionuser/restaurant/store/:id" element={<IndividualStore/>} />
+        <Route path="/seleccionuser/client/totalorders" element={<TotalOrders/>} />
       </Routes>
     </BrowserRouter>
   )

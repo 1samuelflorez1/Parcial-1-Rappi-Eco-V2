@@ -57,6 +57,7 @@ function SpecificStore() {
             <ProductCard
               key={product.id}
               ProductIndividual={product}
+              storeId={Number(id)}
             />
           ))}
         </div>

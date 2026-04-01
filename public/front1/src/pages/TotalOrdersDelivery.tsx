@@ -5,7 +5,7 @@ import type { OrdersType } from "../types/OrdersTypes";
 import logorappi from "../assets/logorappi.png"
 import shopcart from "../assets/ShopCart.png"
 import signout from "../assets/signout.png"
-import { OrdersData } from "../services/OrderData";
+import { OrdersDataDelivery } from "../services/OrderDataDelivery";
 import OrdersCardDelivery from "../components/OrdersCardsDelivery";
 
 function TotalOrdersDelivery() {
@@ -15,7 +15,7 @@ function TotalOrdersDelivery() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await OrdersData();
+        const data = await OrdersDataDelivery();
         setTimeout(() => {
           setTotalOrders(data);
         }, 1);

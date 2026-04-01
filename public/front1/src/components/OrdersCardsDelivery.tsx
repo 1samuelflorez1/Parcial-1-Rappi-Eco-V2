@@ -1,10 +1,26 @@
 import type { OrdersType } from "../types/OrdersTypes";
 
-function OrdersCardDelivery({
-  OrderIndividual,
-}: {
-  OrderIndividual: OrdersType;
-}) {
+function OrdersCardDelivery({OrderIndividual,}: {OrderIndividual: OrdersType;}) {
+
+  const handleAcceptOrder = async () => {
+    try {
+      const res = await fetch("http://localhost:7070/seleccionuser/delivery/totalorders/status", {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            order_id: OrderIndividual.order_id,
+            status: "in the way"
+        }) 
+      });
+
+      if (res.ok) {
+        window.location.reload(); 
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <div
       className="flex flex-col border-2 border-[#fc6251]/30 shadow-lg rounded overflow-hidden m-4 h-auto hover:shadow-2xl transition-all 
@@ -33,6 +49,7 @@ function OrdersCardDelivery({
         <div className="pt-2 w-auto">
           <div className="flex justify-between items-center mb-2">
             <button
+              onClick={handleAcceptOrder}
               className="p-1 bg-white/10 rounded outline-none w-fit
                 hover:scale-105 hover:bg-[#fc6251]/80 transition-all pr-4 pl-4 
                 cursor-pointer mt-2 text-white/80 text-[15px]"

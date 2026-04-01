@@ -24,7 +24,7 @@ export class UsersController {
     }
     createOrder = async (req, res) => {
         try {
-            const {store_id, pay_method, address, status, total, items} = req.body
+            const { store_id, pay_method, address, status, total, items } = req.body
             const orderId = await this.repository.createOrder(store_id, pay_method, address, status, total, items)
             res.status(201).json({ success: true, orderId })
         } catch (error) {
@@ -34,6 +34,14 @@ export class UsersController {
     }
     getTotalOrders = async (req, res) => {
         res.send({ orders: await this.repository.getTotalOrders() })
+    }
+    getTotalOrdersDelivery = async (req, res) => {
+        res.send({ orders: await this.repository.getTotalOrdersDelivery() })
+    }
+    updateOrderOntheWay = async (req, res) => {
+        const { order_id, status } = req.body
+        const order = await this.repository.updateOrderOntheWay(order_id, status)
+        res.json(order)
     }
 }
 

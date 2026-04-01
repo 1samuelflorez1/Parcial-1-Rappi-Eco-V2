@@ -7,6 +7,7 @@ import OptionalRestaurants from "./pages/OptionsRestaurants"
 import IndividualStore from "./pages/IndividualRestaurant"
 import TotalOrders from "./pages/TotalOrders"
 import ShopCart from "./pages/ShopCart"
+import TotalOrdersDelivery from "./pages/TotalOrdersDelivery"
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/seleccionuser/restaurant" element={<OptionalRestaurants/>} />
         <Route path="/seleccionuser/restaurant/store/:id" element={<IndividualStore/>} />
         <Route path="/seleccionuser/client/totalorders" element={<TotalOrders/>} />
+        <Route path="/seleccionuser/delivery" element={<TotalOrdersDelivery/>} />
       </Routes>
     </BrowserRouter>
   )

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import OrdersCards from "../components/OrdersCards";
 import { useNavigate } from "react-router-dom";
 import type { OrdersType } from "../types/OrdersTypes";
 
@@ -7,8 +6,9 @@ import logorappi from "../assets/logorappi.png"
 import shopcart from "../assets/ShopCart.png"
 import signout from "../assets/signout.png"
 import { OrdersData } from "../services/OrderData";
+import OrdersCardDelivery from "../components/OrdersCardsDelivery";
 
-function TotalOrders() {
+function TotalOrdersDelivery() {
   const [TotalOrders, setTotalOrders] = useState<OrdersType[]>([]);
   const navigate = useNavigate()
 
@@ -46,7 +46,7 @@ function TotalOrders() {
       <div className="mb-12">
         {TotalOrders.map((IndividualOrder: OrdersType) => {
           return (
-            <OrdersCards
+            <OrdersCardDelivery
               OrderIndividual={IndividualOrder}
               key={IndividualOrder.id}
             />
@@ -57,4 +57,4 @@ function TotalOrders() {
   );
 }
 
-export default TotalOrders;
+export default TotalOrdersDelivery;

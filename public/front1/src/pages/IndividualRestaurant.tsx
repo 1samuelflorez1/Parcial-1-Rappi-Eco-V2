@@ -37,8 +37,7 @@ function IndividualStore() {
     setStoreInfo(data)
   }
 
-  const handleNewProduct = async (e: React.MouseEvent) => {
-    e.preventDefault();
+  const handleNewProduct = async () => {
 
     await fetch(
       `${import.meta.env.VITE_API_URL}/seleccionuser/restaurant/store/product`,
@@ -127,6 +126,7 @@ function IndividualStore() {
                 onChange={(e) =>
                   setNewProduct({ ...newProduct, price: e.target.value })
                 }
+                type="number"
                 placeholder="Price"
                 className="p-1 pr-3 pl-3 bg-white/10 rounded-4xlp- rounded mb-2 focus:outline-none 
                 focus:scale-105 focus:bg-orange-700 transition-all w-60 hover:scale-103 hover:bg-white/20

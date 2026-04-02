@@ -23,7 +23,7 @@ function ShopCart() {
     }
 
     try {
-      const response = await fetch("http://localhost:7070/seleccionuser/client/order", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/seleccionuser/client/order`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -32,7 +32,7 @@ function ShopCart() {
           store_id: currentStoreId,
           pay_method: payMethod,
           address: address,
-          status: "pending",
+          status: "Pending",
           total: cartTotal,
           items: cartItems.map(item => ({
             product_id: item.id,

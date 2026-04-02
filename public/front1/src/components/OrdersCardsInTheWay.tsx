@@ -1,15 +1,15 @@
 import type { OrdersType } from "../types/OrdersTypes";
 
-function OrdersCardDelivery({OrderIndividual,}: {OrderIndividual: OrdersType;}) {
+function OrdersCardInTheWay({OrderIndividual,}: {OrderIndividual: OrdersType;}) {
 
-  const handleAcceptOrder = async () => {
+  const handleDeliveredOrder = async () => {
     try {
       const res = await fetch(`${import.meta.env.VITE_API_URL}/seleccionuser/delivery/totalorders/status`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
             order_id: OrderIndividual.order_id,
-            status: "On the Way"
+            status: "Delivered"
         }) 
       });
 
@@ -49,12 +49,12 @@ function OrdersCardDelivery({OrderIndividual,}: {OrderIndividual: OrdersType;}) 
         <div className="pt-2 w-auto">
           <div className="flex justify-between items-center mb-2">
             <button
-              onClick={handleAcceptOrder}
+              onClick={handleDeliveredOrder}
               className="p-1 bg-white/10 rounded outline-none w-fit
                 hover:scale-105 hover:bg-[#fc6251]/80 transition-all pr-4 pl-4 
                 cursor-pointer mt-2 text-white/80 text-[15px]"
             >
-              Accept Order
+              Delivered
             </button>
           </div>
 
@@ -72,4 +72,4 @@ function OrdersCardDelivery({OrderIndividual,}: {OrderIndividual: OrdersType;}) 
   );
 }
 
-export default OrdersCardDelivery;
+export default OrdersCardInTheWay;

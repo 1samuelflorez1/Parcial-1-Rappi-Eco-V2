@@ -69,11 +69,34 @@ export class UsersRepository {
             FROM orderproducts op
             JOIN products p ON op.product_id = p.id
             JOIN orders o ON op.order_id = o.id
-            WHERE o.status = 'pending'
+            WHERE o.status = 'Pending'
+        `)
+        return result.rows
+    }
+    getTotalOrdersInTheWay = async () => {
+        const result = await pool.query(`
+            SELECT 
+                op.id, 
+                op.order_id, 
+                op.product_id, 
+                op.unit_price,
+                p.name AS product_name,
+                p.image_product AS product_image,
+                o.status,
+                o.total,
+                o.address
+            FROM orderproducts op
+            JOIN products p ON op.product_id = p.id
+            JOIN orders o ON op.order_id = o.id
+            WHERE o.status = 'On the Way'
         `)
         return result.rows
     }
     updateOrderOntheWay = async (order_id, status) => {
+        const result = await pool.query("UPDATE orders SET status = $2 WHERE id = $1 RETURNING *", [order_id, status])
+        return result.rows[0]
+    }
+    updateOrderDelivered = async (order_id, status) => {
         const result = await pool.query("UPDATE orders SET status = $2 WHERE id = $1 RETURNING *", [order_id, status])
         return result.rows[0]
     }

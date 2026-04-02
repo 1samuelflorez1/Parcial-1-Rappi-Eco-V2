@@ -14,6 +14,8 @@ router.put("/restaurant/store/status", controller.toggleOpenStore)
 router.post("/client/order", controller.createOrder)
 router.get("/client/totalorders", controller.getTotalOrders)
 router.get("/delivery/totalorderdelivery", controller.getTotalOrdersDelivery)
+router.get("/delivery/ordersintheway", controller.getTotalOrdersInTheWay)
 router.put("/delivery/totalorders/status", controller.updateOrderOntheWay)
+router.put("/delivery/totalorders/status", controller.updateOrderDelivered)
 
 export default router

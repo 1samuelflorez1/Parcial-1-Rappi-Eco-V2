@@ -5,17 +5,17 @@ import type { OrdersType } from "../types/OrdersTypes";
 import logorappi from "../assets/logorappi.png"
 import shopcart from "../assets/ShopCart.png"
 import signout from "../assets/signout.png"
-import { OrdersDataDelivery } from "../services/OrderDataDelivery";
-import OrdersCardDelivery from "../components/OrdersCardsDelivery";
+import { OrdersInTheWayDATA } from "../services/OrdersInTheWay";
+import OrdersCardInTheWay from "../components/OrdersCardsInTheWay";
 
-function TotalOrdersDelivery() {
+function OrdersInTheWay() {
   const [TotalOrders, setTotalOrders] = useState<OrdersType[]>([]);
   const navigate = useNavigate()
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const data = await OrdersDataDelivery();
+        const data = await OrdersInTheWayDATA()
         setTimeout(() => {
           setTotalOrders(data);
         }, 1);
@@ -29,7 +29,9 @@ function TotalOrdersDelivery() {
   return (
     <div className="flex flex-col items-center mt-10">
       <div className="flex items-center justify-center">
-        <div className="cursor-none hover:scale-110 transition-all mb-7 absolute">
+        <div 
+        onClick={() => navigate("/seleccionuser/delivery")}
+        className="cursor-none hover:scale-110 transition-all mb-7 absolute">
           <img 
           src={logorappi}></img>
         </div>
@@ -42,19 +44,20 @@ function TotalOrdersDelivery() {
         className="scale-30 flex cursor-pointer self-end ml-220 hover:scale-35 transition-all mb-7" 
         src={shopcart}></img>
       </div>
-      <h1 className="text-5xl font-bold text-[#fc6251]/80 mb-5">Pending Orders</h1>
 
-    {TotalOrders.length > 0 ? (<div className="mb-12">
+      <h1 className="text-5xl font-bold text-[#fc6251]/80 mb-5">Orders On the Way</h1>
+
+      {TotalOrders.length > 0 ? (<div className="mb-12">
         {TotalOrders.map((IndividualOrder: OrdersType) => {
           return (
-            <OrdersCardDelivery
+            <OrdersCardInTheWay
               OrderIndividual={IndividualOrder}
               key={IndividualOrder.id}
             />
           );
         })}
       </div>) : (<div className="text-xl text-white/50 p-10 border-[#fc6251]/30 border-2 rounded mt-5 flex flex-col items-center shadow-lg shadow-black/20">
-          <p className="mb-4 text-white/80 font-bold">There are no pending Orders</p>
+          <p className="mb-4 text-white/80 font-bold">There are No Orders in Progress</p>
           <button 
             onClick={() => navigate(-1)}
             className="p-2 bg-white/10 rounded mb-2 outline-none
@@ -70,4 +73,4 @@ function TotalOrdersDelivery() {
   );
 }
 
-export default TotalOrdersDelivery;
+export default OrdersInTheWay;

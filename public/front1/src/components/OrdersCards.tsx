@@ -23,10 +23,19 @@ function OrdersCard({OrderIndividual}: {OrderIndividual: OrdersType} ) {
                 
                 <div className="mt-2 pt-3">
                     <div className="flex justify-between items-center mb-2">
-                        <span className="text-sm text-white/30">Estado</span>
+                        <span className="text-sm text-white/30 mr-2">Estado</span>
                         <span className={`text-xs font-bold p-2 rounded-md 
-                            ${OrderIndividual.status && OrderIndividual.status.toLowerCase() 
-                            === 'delivered' ? 'bg-green-100 text-green-700' : 'border border-[#fc6251]/80 text-white/80'}`}>
+                            ${OrderIndividual.status 
+                            === 'Delivered' ? 'bg-green-900 text-white/90' : ''}
+                            
+                            ${OrderIndividual.status 
+                            === 'Pending' ? 'bg-red-800/50 text-white/90' : ''}
+                            
+                            ${OrderIndividual.status 
+                            === 'On the Way' ? 'bg-amber-300/30 text-white/90' : ''}
+                            
+                            
+                            `}>
                             {OrderIndividual.status}
                         </span>
                     </div>

@@ -24,7 +24,7 @@ function IndividualStore() {
   });
 
   const handleCloseOpenStore = async () => {
-    const res = await fetch("http://localhost:7070/seleccionuser/restaurant/store/status", {
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/seleccionuser/restaurant/store/status`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -41,7 +41,7 @@ function IndividualStore() {
     e.preventDefault();
 
     await fetch(
-      "http://localhost:7070/seleccionuser/restaurant/store/product",
+      `${import.meta.env.VITE_API_URL}/seleccionuser/restaurant/store/product`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },

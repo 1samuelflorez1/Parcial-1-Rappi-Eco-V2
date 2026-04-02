@@ -43,7 +43,7 @@ function TotalOrders() {
         src={shopcart}></img>
       </div>
 
-      <div className="mb-12">
+    {TotalOrders.length > 0 ? (<div className="mb-12">
         {TotalOrders.map((IndividualOrder: OrdersType) => {
           return (
             <OrdersCards
@@ -52,7 +52,17 @@ function TotalOrders() {
             />
           );
         })}
-      </div>
+      </div>) : (<div className="text-xl text-white/50 p-10 border-[#fc6251]/30 border-2 rounded flex flex-col items-center shadow-lg shadow-black/20">
+          <p className="mb-4 text-white/80 font-bold">You don't have any Order</p>
+          <button 
+            onClick={() => navigate(-1)}
+            className="p-2 bg-white/10 rounded mb-2 outline-none
+                hover:scale-105 hover:bg-[#fc6251]/80 transition-all w-40  
+                cursor-pointer mt-2 text-white/80 text-[15px]"
+          >
+            Go to the Shop
+          </button>
+        </div>)}
     </div>
   );
 }

@@ -38,9 +38,17 @@ export class UsersController {
     getTotalOrdersDelivery = async (req, res) => {
         res.send({ orders: await this.repository.getTotalOrdersDelivery() })
     }
+    getTotalOrdersInTheWay = async (req, res) => {
+        res.send({ orders: await this.repository.getTotalOrdersInTheWay() })
+    }
     updateOrderOntheWay = async (req, res) => {
         const { order_id, status } = req.body
         const order = await this.repository.updateOrderOntheWay(order_id, status)
+        res.json(order)
+    }
+    updateOrderDelivered = async (req, res) => {
+        const { order_id, status } = req.body
+        const order = await this.repository.updateOrderDelivered(order_id, status)
         res.json(order)
     }
 }

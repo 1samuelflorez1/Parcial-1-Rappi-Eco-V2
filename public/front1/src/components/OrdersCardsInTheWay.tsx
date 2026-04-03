@@ -1,6 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import type { OrdersType } from "../types/OrdersTypes";
 
 function OrdersCardInTheWay({OrderIndividual,}: {OrderIndividual: OrdersType;}) {
+
+  const nav = useNavigate()
 
   const handleDeliveredOrder = async () => {
     try {
@@ -14,7 +17,7 @@ function OrdersCardInTheWay({OrderIndividual,}: {OrderIndividual: OrdersType;}) 
       });
 
       if (res.ok) {
-        window.location.reload(); 
+        nav("/seleccionuser") 
       }
     } catch (error) {
       console.log(error);

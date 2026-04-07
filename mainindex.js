@@ -12,11 +12,7 @@ const __dirname = import.meta.dirname
 app.use(express.json()) 
 app.use("/seleccionuser", router)
 
-app.use(express.static(path.join(__dirname, "public/front1/dist")))
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public/front1/dist/index.html"))
-})
 
 app.listen(PORT, () => {
     console.log("listening on port", PORT)

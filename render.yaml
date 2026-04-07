@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: eco-rappi-backend
+    env: node
+    buildCommand: npm install
+    startCommand: node mainindex.js
+    envVars:
+      - key: DB_USER
+        value: postgres.qvzuhcluqjkcpwaxvbtz
+      - key: DB_HOST
+        value: aws-0-us-west-2.pooler.supabase.com
+      - key: DB_NAME
+        value: postgres
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_PORT
+        value: 6543
